@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Semesterbegeleitende Aufgabe in Grundlagen Interaktiver Systeme OMB2" />
+    <meta name="keywords" content="Budget, Manager, Geld, Haushaltsbuch, Ausgaben, Einnahmen, verwalten" />
+    <meta name="author" content="Kevin Seeland" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <title>Einnahme</title>
+  </head>
+  
+  <body>
+
+    <!-- HEADER-->
+
+    <header>
+
+        <div class="UserInterfaceHeader">
+            <!-- Logo -->
+            <a href="home.html">
+                <img id="Logo"
+                src="images/sparschwein.png"
+                alt="Sparschwein"
+                title="Logo" />
+            </a>
+
+            <!-- Personalized Headline-->
+            <h2>Username's Budglet</h2>
+        </div>
+
+    </header>
+
+    <!-- MAIN -->
+
+    <main>
+        <!-- Title -->
+        <div class="titleTransaction">
+            <h3>Einnahme</h3>
+
+            <!-- newTransaction Window -->
+            <div class="WorkingWindow" id="newTransaction">
+
+                <img src="images/plus.png" alt="PLUS" title="Einnahme"/>
+
+                <!-- Formular -->
+                <div id="transactionInfo">
+                    <label>Betrag:</label> <input type="number"/>
+                    <label>Bezeichnung:</label> <input type="text"/>
+                    <label>Datum:</label> <input type="date"/>
+                </div>
+                <div id="repeatTransaction">
+                    <input class="checkbox" type="checkbox" name="Täglich" /><label>Täglich</label>
+                    <input class="checkbox" type="checkbox" name="Monatlich" /><label>Monatlich</label>
+                    <input class="checkbox" type="checkbox" name="Jährlich" /><label>Jährlich</label>
+                </div>
+                <div id="completeTransaction">
+                    <a class="button" href="home.html">Hinzufügen</a>
+                    <a class="button" href="home.html">Abbrechen</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <!-- Copyright -->
+        <p>© Copyright 2022 Kevin Seeland</p>
+
+    </footer>
+
+  </body>
+
+</html>
