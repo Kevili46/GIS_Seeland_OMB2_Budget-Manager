@@ -9,6 +9,7 @@
     <meta name="keywords" content="Budget, Manager, Geld, Haushaltsbuch, Ausgaben, Einnahmen, verwalten" />
     <meta name="author" content="Kevin Seeland" />
     <link rel="stylesheet" href="./style/style.css" />
+    <script src="/scripts/script.js" defer></script>
     <title>Ausgabe</title>
   </head>
   
@@ -47,9 +48,9 @@
 
                 <!-- Formular -->
                 <div id="transactionInfo">
-                    <label>Betrag:</label> <input type="number"/>
-                    <label>Bezeichnung:</label> <input type="text"/>
-                    <label>Datum:</label> <input type="date"/>
+                    <label>Betrag:</label> <input id="taValueMinus" type="number"/>
+                    <label>Bezeichnung:</label> <input id="taName" type="text"/>
+                    <label>Datum:</label> <input id="taDate" type="date"/>
                 </div>
                 <div id="repeatTransaction">
                     <input type="checkbox" name="Täglich" /><label>Täglich</label>
@@ -57,7 +58,7 @@
                     <input type="checkbox" name="Jährlich" /><label>Jährlich</label>
                 </div>
                 <div id="completeTransaction">
-                    <a class="button" href="home.html">Hinzufügen</a>
+                    <button class="button" id="addTransaction" type="submit">Hinzufügen</button>
                     <a class="button" href="home.html">Abbrechen</a>
                 </div>
             </div>
