@@ -47,13 +47,17 @@
                 und einfach organisieren. So behältst du immer den Überblick
                 über deine Finanzen!
             </p>
-
             <!-- Login Formular-->
-            <form>
-                <label>Name:</label> <input id="loginName" type="text"/>
-                <label>Passwort:</label> <input id="loginPassword" type="text"/>
-                <a class="button" id="loginButton" href="home.html" >Login</a>
-            </form>
+            <div id="loginAndErrorBox">
+                <div id="loginFormBox">
+                    <form id="loginForm">
+                        <label for="name">Name:</label> <input id="loginName" type="text" placeholder="Username eingeben" required>
+                        <label for="password">Passwort:</label> <input id="loginPassword" type="password" placeholder="Passwort eingeben"required>
+                        <button class="button" id="loginButton" type="submit ">Login</button>
+                    </form>
+                </div>
+                <div id="errorSpace"></div>
+            </div>
         </div>
 
     </main>

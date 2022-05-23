@@ -75,6 +75,8 @@ a {text-decoration: none;}
     border-radius: .8em;
     margin-left: 1em;
     transition: .2s;
+    border: none;
+    font-size: 1em;
 }
 .button:hover {background-color:rgb(140, 157, 252)}
 
@@ -159,6 +161,11 @@ footer > p {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-s
 }
 
 /* main */
+#IndexMain {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+}
 #IndexMain > p {
     display: flex;
     justify-content: center;
@@ -166,13 +173,17 @@ footer > p {font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-s
     padding: 10px;
     border-radius: 10px;
 }
-#IndexMain > form {
+#loginAndErrorBox {
+    display: flex;
+    flex-flow: column;
+}
+#loginFormBox {
     padding: 20px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
 }
-#IndexMain > form > label { padding-left: 10px;}
+#IndexMain > div > label { padding-left: 10px;}
 
 /* HOME --------------------------------------------*/
 

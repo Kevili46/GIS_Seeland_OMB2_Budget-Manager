@@ -56,17 +56,21 @@
                 <h3>Historie</h3>
 
                 <!-- Transactions Table -->
-                <table>
-                    <tr>
-                        <th>Betrag</th>
-                        <th>Bezeichnung</th>
-                        <th>Datum</th>
-                    </tr>
-                    <tr>
-                        <td>-24.720,13 €</td>
-                        <td>Urlaub Dubai</td>
-                        <td>30.03.2022</td>
-                    </tr>
+                <table id="transactionTable">
+                    <thead>
+                        <tr>
+                            <th>Betrag</th>
+                            <th>Bezeichnung</th>
+                            <th>Datum</th>
+                        </tr>
+                    </thead> 
+                    <tbody id="addedTransactions">
+                        <tr class="transactionEntry">
+                            <td>24.720,13 €</td>
+                            <td>Beispiel</td>
+                            <td>30.03.2022</td>
+                        </tr>
+                    </tbody>
                 </table>
 
                 <!-- Search -->

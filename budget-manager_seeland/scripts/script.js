@@ -10,7 +10,6 @@ class Account {
         this.password = password;
         // Array aus Transaction Objekten (alle Transaktionen, die ein Account eingespeichert hat)
         this.transactions = [];
-        this.balance = this.currentBalance();
     }
     setVorname(neuerVorname) {
         this.vorname = neuerVorname;
@@ -34,7 +33,7 @@ class Account {
         this.password = neuesPassword;
     }
     getPassword() {
-        return this.vorname;
+        return this.password;
     }
     getBalance() {
         return this.balance;
@@ -42,12 +41,13 @@ class Account {
     // der Kontostand entsteht aus der Summe der Beträge aller gespeicherten Transaktionen
     currentBalance() {
         let summeBetraege;
+
         if (this.transactions.length == 0 ) {
             summeBetraege = 0;
         } else {
-            for (let i = 0; 1 < this.transactions.length; i++) {
-                summeBetraege += transactions[i].getBetrag();
-                console.log(transactions[i].getBetrag());
+            for (let i = 0; i < this.transactions.length; i++) {
+                summeBetraege += this.transactions[i].getBetrag();
+                console.log(this.transactions[i].getBetrag());
             }
         }
         return summeBetraege;
@@ -94,7 +94,7 @@ class Transaction {
     }
 }
 
-const acc1 = new Account("Kevin", "Seeland", "Testaccount", "444");
+const acc1 = new Account("Kevin", "Seeland", "Test", "444");
 console.log(acc1);
 console.log(acc1.transactions.length);
 
@@ -104,19 +104,33 @@ console.log(acc1.transactions.length);
 // login ////////////
 const loginName = document.getElementById("loginName");
 const loginPassword = document.getElementById("loginPassword");
-const loginButton = document.getElementById("loginButton");
+const loginForm = document.getElementById("loginForm");
+const errorSpace = document.getElementById("errorSpace");
+const loginFormBox = document.getElementById("loginFormBox");
 
 console.log(loginName);
 console.log(loginPassword);
-console.log(loginButton);
+console.log(loginForm);
+console.log(errorSpace);
+console.log(loginFormBox);
+
+if (loginForm != null) {
+    loginForm.addEventListener("submit", (e) => {
+        if (loginName.value == acc1.getUsername() && loginPassword.value == acc1.getPassword()) {
+            window.location.replace("home.html");
+        }
+        if (loginName.value != acc1.getUsername() || loginPassword.value != acc1.getPassword()) {
+            errorSpace.textContent = "Falsche Anmeldedaten! (Name: Test, Passwort: 444)";
+        }
+        e.preventDefault();
+    });
+}
 
 // functions
 
-/* loginName.addEventListener("change", () => {
-    if (loginName.value == acc1.getUsername() && loginPassword.value === acc1.getPassword()) {
-        loginButton.removeAttribute("href");
-    }
-}); */
+// nur, wenn im Textfeld der richtige Username und das richtige Passwort des acc1 eingegeben werden,
+// wird weitergeleitet
+
 
 // HOME ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -128,17 +142,20 @@ if (displayBalance != null) {
 }
 console.log(acc1.transactions.length);
 
-// TRANSACTIONS ////////////////////////////////////////////////////////////////////////////////////
+// EINNAHME & AUSGABE //////////////////////////////////////////////////////////////////////////////
 
 const addTransaction = document.getElementById("addTransaction");
 const taValuePlus = document.getElementById("taValuePlus");
 const taValueMinus = document.getElementById("taValueMinus");
 const taName = document.getElementById("taName");
 const taDate = document.getElementById("taDate");
+let balance = 0;
 
 if (taValuePlus != null ) {
     addTransaction.addEventListener("click", function() {
         createTransaction(Number(taValuePlus.value), taName.value, taDate.value);
+        balance += Number(taValuePlus.value);
+        console.log(balance);
     });
 }
 if (taValueMinus != null) {
@@ -152,11 +169,53 @@ if (taValueMinus != null) {
 function createTransaction(taValue, taName, taDate) {
     const ta = new Transaction(taValue, taName, taDate);
     console.log(ta);
-    taValue.value = null;
-    taName.value = null;
-    taDate.value = null;
     acc1.addTransaction(ta);
     console.log(acc1.transactions.length);
     console.log(ta.getBetrag());
-    console.log(acc1.getBalance());
 }
+
+// TRANSAKTIONEN ///////////////////////////////////////////////////////////////////////////////////
+
+const tableBody = document.getElementById("addedTransactions");
+
+if (tableBody != null) {
+    const testEntry = document.createElement("tr");
+    const testCells = [
+        createCell("10000"),
+        createCell("test"),
+        createCell("20.20.2300")
+    ];
+    for (const testCell of testCells) {
+        testEntry.append(testCell);
+    }
+    tableBody.appendChild(testEntry);
+    for (let i = 0; i < acc1.transactions.length; i++) {
+        const tableEntry = document.createElement("tr");
+        tableEntry.classList.add("transactionEntry");
+        const cells = [
+            createCell(acc1.transactions[i].getBetrag().toString()),
+            createCell(acc1.transactions[i].getBezeichnung()),
+            createCell(acc1.transactions[i].getDatum())
+        ];
+        for (const cell of cells) {
+            tableEntry.append(cell);
+        }
+        tableBody.appendChild(tableEntry);
+    }
+}
+
+
+/* const alleEntries = document.querySelectorAll(".transactionEntry");
+for (const singleEntry of alleEntries) {
+    singleEntry.setAttribute("onclick", editWindow());
+} */
+
+// functions
+function createCell(information) {
+    const tableCell = document.createElement("td");
+    tableCell.textContent = information;
+    return tableCell;
+}
+/* function editWindow() {
+    alert("Clickable!");
+} */
