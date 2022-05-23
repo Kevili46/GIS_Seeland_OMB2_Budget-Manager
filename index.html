@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Semesterbegeleitende Aufgabe in Grundlagen Interaktiver Systeme OMB2" />
+    <meta name="keywords" content="Budget, Manager, Geld, Haushaltsbuch, Ausgaben, Einnahmen, verwalten" />
+    <meta name="author" content="Kevin Seeland" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <script src="/scripts/script.js" defer></script>
+    <title>Start</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER-->
+
+    <header>
+
+        <div id="IndexHeader">
+            <!-- Logo -->
+            <a href="index.html">
+                <img id="Logo"
+                src="images/sparschwein_white.png"
+                alt="Sparschwein"
+                title="Logo" />
+            </a>
+
+            <!-- Title -->
+            <h1>Budglet</h1>
+
+            <!-- Slogan -->
+            <h2>Manage Your Money!</h2>
+        </div>
+
+    </header>
+
+    <!-- MAIN -->
+
+    <main>
+
+        <div id="IndexMain">
+            <!-- Intro Text-->
+            <p>Mit Budglet kannst du deine Einnahmen und Ausgaben schnell
+                und einfach organisieren. So behältst du immer den Überblick
+                über deine Finanzen!
+            </p>
+            <!-- Login Formular-->
+            <div id="loginAndErrorBox">
+                <div id="loginFormBox">
+                    <form id="loginForm">
+                        <label for="name">Name:</label> <input id="loginName" type="text" placeholder="Username eingeben" required>
+                        <label for="password">Passwort:</label> <input id="loginPassword" type="password" placeholder="Passwort eingeben"required>
+                        <button class="button" id="loginButton" type="submit ">Login</button>
+                    </form>
+                </div>
+                <div id="errorSpace"></div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <!-- Copyright -->
+        <p>© Copyright 2022 Kevin Seeland</p>
+
+    </footer>
+
+  </body>
+
+</html>

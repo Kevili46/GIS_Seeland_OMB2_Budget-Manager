@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Semesterbegeleitende Aufgabe in Grundlagen Interaktiver Systeme OMB2" />
+    <meta name="keywords" content="Budget, Manager, Geld, Haushaltsbuch, Ausgaben, Einnahmen, verwalten" />
+    <meta name="author" content="Kevin Seeland" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <script src="/scripts/script.js" defer></script>
+    <title>Transaktionen</title>
+  </head>
+  
+  <body>
+
+    <!-- HEADER-->
+
+    <header>
+
+        <div class="UserInterfaceHeader">
+            <!-- Logo -->
+            <a href="home.html">
+                <img id="Logo"
+                src="images/sparschwein.png"
+                alt="Sparschwein"
+                title="Logo" />
+            </a>
+
+            <!-- Personalized Headline-->
+            <h2>Username's Budglet</h2>
+        </div>
+
+    </header>
+
+    <!-- MAIN -->
+
+    <main>
+
+        <div class="UserInterfaceMain">
+
+            <!-- Main Navigation-->
+            <nav class="MainNav">
+                <ul>
+                    <a  class="nextNav" href="home.html"><li>Home</li></a>
+                    <li class="currentNav"><strong>Transaktionen</strong></li>
+                    <a  class="nextNav" href="statistiken.html"><li>Statistiken</li></a>
+                </ul>
+            </nav>
+
+            <!-- History Window -->
+            <div class="WorkingWindow">
+
+                <!-- Title -->
+                <h3>Historie</h3>
+
+                <!-- Transactions Table -->
+                <table id="transactionTable">
+                    <thead>
+                        <tr>
+                            <th>Betrag</th>
+                            <th>Bezeichnung</th>
+                            <th>Datum</th>
+                        </tr>
+                    </thead> 
+                    <tbody id="addedTransactions">
+                        <tr class="transactionEntry">
+                            <td>24.720,13 €</td>
+                            <td>Beispiel</td>
+                            <td>30.03.2022</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Search -->
+                <div class="search">
+                <label>Suche</label> <input type="text" />
+                </div>
+            </div>
+
+            <!-- Logout -->
+            <a class="button" id="logout" href="index.html">Logout</a>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <!-- Copyright -->
+        <p>© Copyright 2022 Kevin Seeland</p>
+
+    </footer>
+
+  </body>
+
+</html>
