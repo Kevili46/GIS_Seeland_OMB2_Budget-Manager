@@ -1,1 +1,1 @@
-[{"betrag":"100","bezeichnung":"Einnahme 2","datum":"2022-06-16"}]
+[{"betrag":"12343","bezeichnung":"Hallo","datum":"2022-06-23"},{"betrag":"198344","bezeichnung":"#teterte","datum":"2022-06-24"}]

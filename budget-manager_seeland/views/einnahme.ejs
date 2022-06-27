@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="de">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Semesterbegeleitende Aufgabe in Grundlagen Interaktiver Systeme OMB2" />
+    <meta name="keywords" content="Budget, Manager, Geld, Haushaltsbuch, Ausgaben, Einnahmen, verwalten" />
+    <meta name="author" content="Kevin Seeland" />
+    <link rel="stylesheet" href="./style/style.css" />
+    <script src="./scripts/script.js" defer></script>
+    <title>Budglet | <%= title %></title>
+  </head>
+  
+  <body>
+
+    <!-- HEADER-->
+
+    <header>
+
+        <div class="UserInterfaceHeader">
+            <!-- Logo -->
+            <a href="/">
+                <img id="Logo"
+                src="images/sparschwein.png"
+                alt="Sparschwein"
+                title="Logo" />
+            </a>
+
+            <!-- Personalized Headline-->
+            <h2>Test's Budglet</h2>
+        </div>
+
+    </header>
+
+    <!-- MAIN -->
+
+    <main>
+        <!-- Title -->
+        <div class="titleTransaction">
+            <h3>Einnahme</h3>
+
+            <!-- newTransaction Window -->
+            <div class="WorkingWindow" id="newTransaction">
+
+                <img src="images/plus.png" alt="PLUS" title="Einnahme"/>
+
+                <!-- Formular -->
+                <form id="submitTransaction" action="/einnahme" method="post">
+                    <div id="transactionInfo">
+                        <label>Betrag:</label> <input id="taValuePlus" type="number" name="betrag" placeholder="Betrag eingeben" step=".01" required/>
+                        <label>Bezeichnung:</label> <input id="taName" type="text" name="bezeichnung" placeholder="Bezeichnung eingeben"/>
+                        <label>Datum:</label> <input id="taDate" type="date" name="datum"/>
+                    </div>
+                    <div id="repeatTransaction">
+                        <input class="checkbox" type="checkbox" name="täglich" /><label>Täglich</label>
+                        <input class="checkbox" type="checkbox" name="monatlich" /><label>Monatlich</label>
+                        <input class="checkbox" type="checkbox" name="jährlich" /><label>Jährlich</label>
+                    </div>
+                    <div id="completeTransaction">
+                        <button class="button" id="addTransaction" type="submit">Hinzufügen</button>
+                        <a class="button" href="/home">Zurück</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <!-- Copyright -->
+        <p>© Copyright 2022 Kevin Seeland</p>
+
+    </footer>
+
+  </body>
+
+</html>

@@ -1,57 +1,92 @@
 const express = require('express');
-const fs = require('fs');
+const mongoose = require('mongoose');
+const Transaction = require('./object_models/transaction');
 
 // create server with express
 const app = express();
 
-// on port 3000
-app.listen(3000, () => {
-    console.log('Server verbunden');
-});
+// View Engine: EJS to dynamically edit the HTML file
+app.set('view engine', 'ejs');
+
+// connect to MongoDB, if success create the server
+const dbURI = 'mongodb+srv://Kevin:C43367@budglet.d00ju.mongodb.net/Budglet?retryWrites=true&w=majority';
+mongoose.connect(dbURI)
+    .then(() => app.listen(3000, () => {
+        console.log('Server verbunden');
+        console.log('Verbindung zur Datenbank hergestellt');
+    }))
+    .catch((err) => console.log(err));
+
 
 // ensure availability of CSS and JS Files
 app.use(express.static('public'));
 
-// convert submitted forms into objects
+// convert submitted forms (transactions) into objects
 app.use(express.urlencoded({ extended: true }));
 
 
 // --------- match browserrequests to the respective html file
 app.get('/', (request, response) => {
-    response.sendFile('public/index.html', {root: __dirname});
+    response.render('index', { title: 'Start' });
 });
 app.get('/home', (request, response) => {
-    response.sendFile('public/home.html', {root: __dirname});
+    Transaction.find()
+        .then((result) => {
+            response.render('home', { title: 'Home', transactions: result});
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 });
 app.get('/transaktionen', (request, response) => {
-    response.sendFile('public/transaktionen.html', {root: __dirname});
+    Transaction.find().sort({createdAt: -1})
+        .then((result) => {
+            response.render('transaktionen', { title: 'Transaktionen', transactions: result});
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 });
 app.get('/statistiken', (request, response) => {
-    response.sendFile('public/statistiken.html', {root: __dirname});
+    response.render('statistiken', { title: 'Statisitken' });
 });
 app.get('/einnahme', (request, response) => {
-    response.sendFile('public/einnahme.html', {root: __dirname});
+    response.render('einnahme', { title: 'Einnahme' });
 });
 app.get('/ausgabe', (request, response) => {
-    response.sendFile('public/ausgabe.html', {root: __dirname});
+    response.render('ausgabe', { title: 'Ausgabe' });
 });
 
 
 // -----------------Server functions
 
-// Array of Transactions
-const transactions = [];
-function writeToFile() {
-    const taToString = JSON.stringify(transactions);
-    fs.writeFile('public/savings/transactions.txt', taToString, () => {
-        console.log('file was written');
-});
-}
-
-app.post('/transaktionen', (request, response) => {
+// Save transaction to DB Budglet -> transactions
+// INCOME
+app.post('/einnahme', (request, response) => {
     console.log(request.body);
-    const transaction = request.body;
-    transactions.push(transaction);
-    writeToFile();
-    response.redirect('/home');
+    const transaction = new Transaction(request.body);
+    transaction.save()
+        .then(() => {
+            console.log('Transaktion gespeichert');
+            response.redirect('/home');
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+});
+// EXPENSE
+app.post('/ausgabe', (request, response) => {
+    console.log(request.body);
+    const transaction = new Transaction(request.body);
+    // because of expense: betrag = -betrag
+    transaction.betrag = -transaction.betrag;
+    console.log(transaction);
+    transaction.save()
+        .then(() => {
+            console.log('Transaktion gespeichert');
+            response.redirect('/home');
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 });

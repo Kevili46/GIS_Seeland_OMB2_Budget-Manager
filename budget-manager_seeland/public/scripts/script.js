@@ -65,38 +65,6 @@ class Account {
         this.transactions.splice(alteTransaktion);
     }
 }
-class Transaction {
-    constructor(betrag, bezeichnung, datum, wiederholen) {
-        this.betrag = Number(betrag);
-        this.bezeichnung = bezeichnung;
-        this.datum = datum;
-        this.wiederholen = wiederholen;
-    }
-    setBetrag(neuerBetrag) {
-        this.betrag = neuerBetrag;
-    }
-    getBetrag() {
-        return this.betrag;
-    }
-    setBezeichnung(neueBezeichnung) {
-        this.bezeichnung = neueBezeichnung;
-    }
-    getBezeichnung() {
-        return this.bezeichnung;
-    }
-    setDatum(neuesDatum) {
-        this.datum = neuesDatum;
-    }
-    getDatum() {
-        return this.datum;
-    }
-    setWiederholen(anderePeriode) {
-        this.wiederholen = anderePeriode;
-    }
-    getWiederholen() {
-        return this.wiederholen;
-    }
-}
 
 const acc1 = new Account("Kevin", "Seeland", "Test", "444");
 console.log(acc1);
@@ -130,22 +98,28 @@ if (loginForm != null) {
     });
 }
 
-// functions
-
-// nur, wenn im Textfeld der richtige Username und das richtige Passwort des acc1 eingegeben werden,
-// wird weitergeleitet
-
-
 // HOME ////////////////////////////////////////////////////////////////////////////////////////////
 
-const displayBalance = document.getElementById("displayBalance");
+/* const displayBalance = document.getElementById("displayBalance");
 console.log(displayBalance);
 if (displayBalance != null) {
+    const currentBalance = calculateBalance(transactions);
     displayBalance.textContent = new Intl.NumberFormat("de-DE", {
-        style: "currency", currency: "EUR" }).format(acc1.currentBalance());
+        style: "currency", currency: "EUR" }).format(currentBalance);
 }
-console.log(acc1.transactions.length);
 
+// functions
+
+function calculateBalance(transactions) {
+    let balance = 100;
+    if (transactions > 0 ) {
+        for ( let transaction of transactions ) {
+            balance += transaction.betrag;
+        }
+    }
+    return balance;
+}
+*/
 // EINNAHME & AUSGABE //////////////////////////////////////////////////////////////////////////////
 
 /* const addTransaction = document.getElementById("addTransaction");
@@ -180,7 +154,7 @@ function createTransaction(taValue, taName, taDate) {
 
 // TRANSAKTIONEN ///////////////////////////////////////////////////////////////////////////////////
 
-const tableBody = document.getElementById("addedTransactions");
+/* const tableBody = document.getElementById("addedTransactions");
 
 if (tableBody != null) {
     const testEntry = document.createElement("tr");
@@ -209,10 +183,10 @@ if (tableBody != null) {
 }
 
 
-/* const alleEntries = document.querySelectorAll(".transactionEntry");
+const alleEntries = document.querySelectorAll(".transactionEntry");
 for (const singleEntry of alleEntries) {
     singleEntry.setAttribute("onclick", editWindow());
-} */
+}
 
 // functions
 function createCell(information) {
@@ -220,9 +194,9 @@ function createCell(information) {
     tableCell.textContent = information;
     return tableCell;
 }
-/* function editWindow() {
+function editWindow() {
     alert("Clickable!");
-} */
-
+}
+*/
 
 // Server functions
